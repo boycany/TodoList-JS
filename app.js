@@ -4,11 +4,24 @@ function createCheckAndTrashBtn(todoContent) {
   completeBtn.classList.add("complete");
   completeBtn.innerHTML = `<i class="fa-solid fa-check"></i>`;
   completeBtn.addEventListener("click", (e) => {
-    // console.log(e.target)
+    // console.log(e.target.parentElement.children[0].textContent);
     //會發現大部份時候會點到<i>, 很少會點到<button>
     //這時候要去css檔裡設定<i>的pointer-event: none
     let todoItem = e.target.parentElement;
     todoItem.classList.toggle("done");
+
+    let myListArr = JSON.parse(localStorage.getItem("list"));
+    let targetText = e.target.parentElement.children[0].textContent;
+
+    myListArr.forEach((item) => {
+      if (item.todoText === targetText) {
+        // console.log("done:", item.done, typeof item.done);
+        item.done = !item.done;
+        localStorage.setItem("list", JSON.stringify(myListArr));
+      }
+    });
+
+    console.log("myListArr", myListArr, "target", targetText);
   });
   //create red trash can
   let trashBtn = document.createElement("button");
@@ -131,6 +144,7 @@ addBtn.addEventListener("click", (e) => {
     todoText: todoText,
     todoMonth: todoMonth,
     todoDay: todoDay,
+    done: false,
   };
 
   //store data in an array of objects
@@ -167,6 +181,9 @@ function loadData() {
     myListArr.forEach((element) => {
       let todoContent = document.createElement("div");
       todoContent.classList.add("todo");
+      if (element.done === true) {
+        todoContent.classList.add("done");
+      }
 
       let text = document.createElement("p");
       text.classList.add("todo-text");
