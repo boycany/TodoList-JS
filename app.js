@@ -117,6 +117,15 @@ addBtn.addEventListener("click", (e) => {
     alert("please enter something");
     return; //記得加return，才不會繼續執行下方的程式碼
   }
+  if (
+    Number(todoMonth) > 12 ||
+    Number(todoMonth) < 1 ||
+    Number(todoDay) > 31 ||
+    Number(todoDay) < 1
+  ) {
+    alert("please enter right date");
+    return;
+  }
 
   //create an todo item
   let todoContent = document.createElement("div");

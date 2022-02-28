@@ -42,6 +42,8 @@ form {
     // -moz-appearance: textfield; /* Firefox */
   }
 
+  // 去除掉 數字input的上下箭頭
+
   /* Chrome, Safari, Edge, Opera */
   // input::-webkit-outer-spin-button,
   // input::-webkit-inner-spin-button {
@@ -54,6 +56,30 @@ form {
     background-color: rgb(211, 93, 181);
     color: white;
   }
+  @media screen and (max-width: 576px) {
+    input {
+      width: 200px;
+      font-size: 1rem;
+    }
+    input[type="number"] {
+      width: 50px;
+    }
+    button {
+      font-size: 1.2rem;
+    }
+  }
+  @media screen and (max-width: 376px) {
+    input {
+      width: 160px;
+      font-size: 0.8rem;
+    }
+    input[type="number"] {
+      width: 30px;
+    }
+    button {
+      font-size: 0.8rem;
+    }
+  }
 }
 
 section {
@@ -62,7 +88,7 @@ section {
   align-items: center;
 
   div.todo {
-    width: 30vw;
+    width: 500px;
     display: flex;
     align-items: center;
     margin: 0.2rem 0rem;
@@ -71,7 +97,7 @@ section {
     p {
       color: black;
       background-color: antiquewhite;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       padding: 0.25rem 0.5rem;
       margin: 0.1rem;
     }
@@ -97,6 +123,23 @@ section {
       background-color: red;
     }
   }
+
+  @media screen and (max-width: 576px) {
+    div.todo {
+      width: 300px;
+    }
+  }
+  @media screen and (max-width: 376px) {
+    div.todo {
+      width: 250px;
+      p {
+        font-size: 0.8rem;
+      }
+      button {
+        font-size: 0.8rem;
+      }
+    }
+  }
 }
 
 .done {
@@ -118,6 +161,18 @@ div.sort {
     padding: 0.25rem 0.5rem;
     font-size: 1.5rem;
     border-radius: 15px;
+  }
+  @media screen and (max-width: 576px) {
+    button {
+      font-size: 1rem;
+      width: 150px;
+    }
+  }
+  @media screen and (max-width: 376px) {
+    button {
+      font-size: 0.7rem;
+      width: 100px;
+    }
   }
 }
 
